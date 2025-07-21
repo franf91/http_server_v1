@@ -50,6 +50,31 @@ This is a very simple http server. The client.c file sets up a client socket tha
 
 <img width="293" height="346" alt="Screen Shot 2025-07-21 at 4 30 25 PM" src="https://github.com/user-attachments/assets/8091d1dd-593e-422e-8d32-e2215d5151c4" />
 
+#### What is the application layer?
+
+- The application layer hosts network programs and defines the protocols they use to exchange messages across the network[3]
+
+#### What is the transport layer?
+
+- The transport layer is responsible for transporting application layer messages between programs[3]
+- Transport layer uses either TCP  or User Datagram protocol(UDP) [3]
+- TCP is connection oriented,is reliable, has flow control, has congestion control, and segmentation [3]
+- UDP is connectionless, is unreliable, has no flow control, has no congestion control, and is lightweight [3]
+
+#### What is the network layer?
+
+- The network layer is responsible for moving network-layer packets known as datagrams from one program to the another.[3]
+- The packets are application messages broken into smaller chunks[3]
+
+#### What is the link layer?
+
+- The link layer is responsible for receiving the datagram from network layer and it delivering to the next node[3]
+- A node can refer to another host(computer), router,switch,and access point[3]
+- The link layer packets are also called frames[3]
+
+#### What is the physical layer?
+
+- The physical layer is responsible to move the individual bits within the frame from one node to the next[3]
 
 #### What is an http server?
 
