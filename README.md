@@ -34,7 +34,78 @@ This is a very simple http server. The client.c file sets up a client socket tha
 
 <img width="569" height="77" alt="Screen Shot 2025-07-20 at 9 59 42 PM" src="https://github.com/user-attachments/assets/bd278e3d-287f-4b43-9b52-2522c9025354" />
 
-<h2> Background </h2>
+<h2> Some simple Q/A related to http servers </h2>
+
+#### What is a protocol?
+
+- An agreement on how programs will communicate accross a computer network [1]
+
+#### Which protocol stack does an http server and client use to communicate
+
+- The Transmission Control Protocol (TCP) and the Internet Protocol (IP). They are collectively known as TCP/IP[3]
+
+#### How is the TCP/IP stack organized?
+
+- Its organized in a layered architecture which include the following layers: application,transport,network,link, and physical[3]
+
+<img width="293" height="346" alt="Screen Shot 2025-07-21 at 4 30 25 PM" src="https://github.com/user-attachments/assets/8091d1dd-593e-422e-8d32-e2215d5151c4" />
 
 
+#### What is an http server?
+
+- A long running program (daemon) that generally communicates over the network only when a request is received. [1]
+
+#### What is a client?
+
+- A typically short-lived program that always initiates communication with the HTTP server. [1]
+
+#### Why does client always initiate communication?
+
+- It simplifies the protocol suite and the programs that use them.
+
+#### What is a socket?
+
+- Sockets are an interprocess communication (IPC) mechanism that enable programs to exchange data, whether they are running on the same machine or on separate machines connected via a network [2]
+
+#### How are sockets identified?
+
+- They are identified by and ip address and a port
+
+#### What type of ip addresses are used in http server?
+
+- They can use internet protocol version 4 (ipv4) or version 6 (ipv6) addresses [2]
+- ipv4 is 32 bits in size [2]
+- ipv6 is 128 bits in size [2]
+- port size is 16 bit whether ipv4 or ipv6 is used [2]
+
+#### What are the steps involved in setting up an http server?
+
+- (1) Create the socket
+- (2) Bind the socket to an ip address and port
+- (3) listen for client connections
+- (4) accept a client connection
+- (5) loop through (3) and (4) until some server error or server closes
+
+#### What are the steps involved in setting up a client socket to connect to http server?
+
+- (1) Create socket
+- (2) Connects to server
+- (3) Closes
+
+#### Can show a diagram describing the set up process of http server and client? [2]
+
+<img width="614" height="491" alt="Screen Shot 2025-07-21 at 3 07 58 PM" src="https://github.com/user-attachments/assets/f6b186d8-cfd6-40ee-89be-4d81a2b98cb3" />
+
+
+<h2>References</h2>
+
+[1] W. R. Stevens, B. Fenner, and A. M. Rudoff, *UNIX® Network Programming, Volume 1: The Sockets Networking API*, 3rd ed. Boston, MA: Addison‑Wesley Professional, 2003.
+
+[2] M. Kerrisk, *The Linux Programming Interface: A Linux and UNIX System Programming Handbook*, 1st ed. San Francisco, CA, USA: No Starch Press, 2010.
+
+[3] J. F. Kurose and K. W. Ross, *Computer Networking: A Top-Down Approach*, 6th ed. Boston, MA, USA: Pearson, 2013.
+
+
+
+  
 
