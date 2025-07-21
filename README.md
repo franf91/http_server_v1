@@ -88,6 +88,10 @@ This is a very simple http server. The client.c file sets up a client socket tha
 
 - It simplifies the protocol suite and the programs that use them.
 
+#### Which protocol does the http server use at the transport layer?
+
+- Generally for http server its TCP
+
 #### What is a socket?
 
 - Sockets are an interprocess communication (IPC) mechanism that enable programs to exchange data, whether they are running on the same machine or on separate machines connected via a network [2]
@@ -120,6 +124,20 @@ This is a very simple http server. The client.c file sets up a client socket tha
 #### Can show a diagram describing the set up process of http server and client? [2]
 
 <img width="614" height="491" alt="Screen Shot 2025-07-21 at 3 07 58 PM" src="https://github.com/user-attachments/assets/f6b186d8-cfd6-40ee-89be-4d81a2b98cb3" />
+
+#### What is a file descriptor?
+
+- File descriptors are non negative integers(usually small) that are used to refer to all types of open files including pipes,FIFOs,sockets,terminals,devices,and regular files[2]
+
+#### What is the relationship between file descriptors and open files?
+
+- The relationship between file descriptor and open file is not one to one. It is possible to have multiple file descriptors refering to the same open file.[2]
+- This is possible because the kernel maintains file descriptor table(per process), open file table(system wide), and I-node table(system wide) [2]
+- Each entry in the file descriptor table holds file descriptor flags and a pointer to the open file table[2]
+- Each entry in the open file table contains file offset,status flags, and pointer to I-node table [2]
+- Each entry in the I-node table contains file type, file locks and pointer to data block on disk[2]
+
+<img width="705" height="508" alt="Screen Shot 2025-07-21 at 7 39 15 PM" src="https://github.com/user-attachments/assets/2130b6d7-8d9d-491a-8740-0c7cb4e87b03" />
 
 
 <h2>References</h2>
