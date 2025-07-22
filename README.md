@@ -139,6 +139,63 @@ This is a very simple http server. The client.c file sets up a client socket tha
 
 <img width="705" height="508" alt="Screen Shot 2025-07-21 at 7 39 15 PM" src="https://github.com/user-attachments/assets/2130b6d7-8d9d-491a-8740-0c7cb4e87b03" />
 
+<h2>Explain the functions used in Server.c code </h2>
+
+#### [socket(AF_INET, SOCK_STREAM, 0)](https://man7.org/linux/man-pages/man2/socket.2.html)
+
+- The socket functions creates an endpoint for communication and returns a file descriptor that refers to that endpoint.
+- On success a non negative integer is returned
+- On error -1 is returned
+- The first argument refers to the domain.The domain argument specifies a communication domain; this selects the protocol family which will be used for communication. AF_INET refers to IPv4 Internet protocols.
+- The second argument is the type.  The socket has the indicated type, which specifies the communication semantics. SOCK_STREAM provides sequenced, reliable, two-way, connection-basedbyte streams.  An out-of-band data transmission mechanism may be supported.
+- The third argument is the protocol to be used with the socket. 0 gives the default protocol
+
+#### [bind(server_fd, (struct sockaddr *)&server_addr, sizeof(server_addr))](https://man7.org/linux/man-pages/man2/bind.2.html)
+
+- The bind function assigns the address specified by server_addr to the socket referred to by the file descriptor server_fd.
+- On success 0 is returned.
+- On error -1 is returned.
+- The first argument specifies the file descriptor of the server socket
+- The second argument refers to a pointer of type sockaddr struct that holds the ip address and port of server in the sa_data member.
+  <img width="404" height="113" alt="Screen Shot 2025-07-21 at 8 31 13 PM" src="https://github.com/user-attachments/assets/3b54556b-6098-45b2-8b57-bce8cbdccdc0" />
+- The second argument is passed an argument of type pointer to sockaddr_in and casted to pointer of type sockaddr. This is the case because sockaddr_in makes it easier to assign a port(sin_port) and ip address (sin_addr) as they are two members instead of one.
+  <img width="463" height="173" alt="Screen Shot 2025-07-21 at 8 34 28 PM" src="https://github.com/user-attachments/assets/f0e7cb80-e31e-4456-8754-d816ecfc00ef" />
+- The third argument passes size of sockaddr struct.
+
+#### [listen(server_fd, SERVER_PENDING_CONNECTION)](https://man7.org/linux/man-pages/man2/listen.2.html)
+
+- The listen function  marks the socket referred to by sockfd as a passive socket, that is, as a socket that will be used to accept incoming connection requests using accept(2).
+- On success 0 is returned.
+- On error -1 is returned.
+- The first argument refers to the server file descriptor
+- The second argument is the backlog that defines the maximum length to which the queue of pending connections for server_fd may grow.
+
+#### [accept(server_fd, (struct sockaddr *)&client_addr, &addrlen))](https://man7.org/linux/man-pages/man2/accept.2.html)
+
+- The accept function extracts the first connection request on the queue of pending connections for the listening socket, server_fd, creates a new connected socket, and returns a new file descriptor referring to that socket
+- On success a non negative integer is returned
+- On error -1 is returned
+- The first argument is file descriptor for server
+- The second argument is a pointer of type strut sockaddr refering to client
+- The third argument is a pointer to the size of a the client sockaddr
+
+#### [read(new_socket, buffer, SERVER_BUFFER)](https://man7.org/linux/man-pages/man2/read.2.html)
+
+- The read function attempts to read from a client file descriptor.
+- On success the number of bytes read is returned
+- On error -1 is returned
+- The first argument refers to a client file descriptor
+- The second argument refers to the buffer that stores in bytes what being read
+- The third argument is the maximum number of bytes to be read from file descriptor
+
+#### [write(new_socket, hello, strlen(hello))](https://man7.org/linux/man-pages/man2/write.2.html)
+
+- The write function writes to a client file descriptor.
+- On success, the number of bytes written is returned.
+- On error -1 is returned
+- The first argument refers to a client file descriptor
+- The second argument is a pointer to the buffer that holds the data you want to write.
+- The third argument is the maximum number of bytes to write from the buffer.
 
 <h2>References</h2>
 
@@ -147,8 +204,3 @@ This is a very simple http server. The client.c file sets up a client socket tha
 [2] M. Kerrisk, *The Linux Programming Interface: A Linux and UNIX System Programming Handbook*, 1st ed. San Francisco, CA, USA: No Starch Press, 2010.
 
 [3] J. F. Kurose and K. W. Ross, *Computer Networking: A Top-Down Approach*, 6th ed. Boston, MA, USA: Pearson, 2013.
-
-
-
-  
-
