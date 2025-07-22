@@ -197,6 +197,29 @@ This is a very simple http server. The client.c file sets up a client socket tha
 - The second argument is a pointer to the buffer that holds the data you want to write.
 - The third argument is the maximum number of bytes to write from the buffer.
 
+<h2>Explain the functions used in Client.c code (only unique as repeated are explained above) </h2>
+
+#### [connect(client_fd, (struct sockaddr *)&server_addr, sizeof(server_addr))](https://man7.org/linux/man-pages/man2/connect.2.html)
+
+- The connect function initiates a connection on a socket.
+- On success 0 is returned.
+- On error -1 is returned.
+- The first argument refers to the client file descriptor.
+- The second argument is a pointer of type strut sockaddr refering to server
+- The third argument is the size of sockaddr refering to server
+
+####  [send(client_fd, hello, strlen(hello), 0)](https://man7.org/linux/man-pages/man2/send.2.html)
+
+- The send function sends a message on a socket.
+- Basically the send function is equivalent to write but used only for sockets that are in a connected state.
+- On success the number of bytes sent is returned.
+- On error -1 is returned.
+- The first argument refers to client file descriptor.
+- The second argument is a pointer to the buffer that holds the data you want to send
+- The third argument is the maximum number of bytes to send from the buffer.
+- The fourth argument is a flags argument when set to 0 makes send equivalent to write
+
+
 <h2>References</h2>
 
 [1] W. R. Stevens, B. Fenner, and A. M. Rudoff, *UNIX® Network Programming, Volume 1: The Sockets Networking API*, 3rd ed. Boston, MA: Addison‑Wesley Professional, 2003.
